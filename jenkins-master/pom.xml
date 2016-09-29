@@ -10,6 +10,14 @@
     <maven.compiler.target>7</maven.compiler.target>
   </properties>
 
+  <distributionManagement>
+   <snapshotRepository>
+      <id>nexus-snapshots</id>
+      <url>http://ec2-52-66-177-84.ap-south-1.compute.amazonaws.com:8081/nexus/content/repositories/snapshots</url>
+   </snapshotRepository>
+</distributionManagement>
+  
+  
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
@@ -40,6 +48,27 @@
         </execution>
       </executions>
     </plugin>
+    
+    <plugin>
+   <groupId>org.sonatype.plugins</groupId>
+   <artifactId>nexus-staging-maven-plugin</artifactId>
+   <version>1.3</version>
+   <executions>
+      <execution>
+         <id>default-deploy</id>
+         <phase>deploy</phase>
+         <goals>
+            <goal>deploy</goal>
+         </goals>
+      </execution>
+   </executions>
+   <configuration>
+      <serverId>nexus</serverId>
+      <nexusUrl>http://ec2-52-66-177-84.ap-south-1.compute.amazonaws.com:8081/nexus/</nexusUrl>
+      <skipStaging>true</skipStaging>
+   </configuration>
+</plugin>
+    
   </plugins>
 </build> 
   
