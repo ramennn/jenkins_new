@@ -12,7 +12,7 @@
 
   <distributionManagement>
    <snapshotRepository>
-      <id>snapshots</id>
+      <id>nexus-snapshots</id>
       <url>http://ec2-52-66-5-42.ap-south-1.compute.amazonaws.com:8081/nexus/content/repositories/snapshots</url>
    </snapshotRepository>
 </distributionManagement>
