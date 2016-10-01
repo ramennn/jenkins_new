@@ -10,12 +10,14 @@
     <maven.compiler.target>7</maven.compiler.target>
   </properties>
 
+<distributionManagement>	
 <repositories>
   <repository>
          <id>nexus-snapshots</id>
       <url>http://ec2-52-66-177-84.ap-south-1.compute.amazonaws.com:8081/nexus/content/repositories/snapshots</url>
   </repository>
 </repositories>
+</distributionManagement>
 
 
   
