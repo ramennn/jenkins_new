@@ -12,14 +12,14 @@
     <maven.compiler.target>7</maven.compiler.target>
   </properties>
 
-
+ <distributionManagement>
  <repositories>
   <repository>
     <id>nexus-releases</id>
     <url>http://ec2-52-66-5-42.ap-south-1.compute.amazonaws.com:8081/nexus/content/repositories/releases</url>
   </repository>
 </repositories>
-
+ </distributionManagement>
 
 
 <dependencies>
