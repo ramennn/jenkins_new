@@ -23,12 +23,7 @@
 
 
 <dependencies>
-<dependency>
-    <groupId>abc</groupId>
-    <artifactId>abc</artifactId>
-    <version>${version}</version>      
-<type>war</type>	
-</dependency>
+
  <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
