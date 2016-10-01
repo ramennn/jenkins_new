@@ -4,14 +4,19 @@
   <modelVersion>4.0.0</modelVersion>
   <artifactId>abc</artifactId>
   <groupId>abc</groupId>
-  <version>${build.version}</version>
+  <version>${version}</version>
 
+  
+    <properties>
+    <maven.compiler.source>7</maven.compiler.source>
+    <maven.compiler.target>7</maven.compiler.target>
+  </properties>
 
 
  <repositories>
   <repository>
     <id>nexus-releases</id>
-    <url>http://local:8081/nexus/content/repositories/releases</url>
+    <url>http://ec2-52-66-5-42.ap-south-1.compute.amazonaws.com:8081/nexus/content/repositories/releases</url>
   </repository>
 </repositories>
 
@@ -21,9 +26,14 @@
 <dependency>
     <groupId>abc</groupId>
     <artifactId>abc</artifactId>
-    <version>${build.version}</version>      
+    <version>${version}</version>      
 <type>war</type>	
 </dependency>
+ <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.11</version>
+    </dependency>
 </dependencies>
 
 
@@ -36,27 +46,27 @@
   <build>
     <plugins>
 
-	<plugin>
-        <artifactId>maven-antrun-plugin</artifactId>
-        <version>1.7</version>
-        <executions>
-          <execution>
-            <phase>compile</phase>
-			<goals>
-              <goal>run</goal>
-            </goals>
-            <configuration>
-                <target name="runbuild">
- 
-             <ant antfile="build.xml" target="build"/>
- 
-              </target>
-            </configuration>
-            
-          </execution>
-        </executions>
-      </plugin>
-	  
+
+    <plugin>
+      <groupId>org.jacoco</groupId>
+      <artifactId>jacoco-maven-plugin</artifactId>
+      <version>0.7.5.201505241946</version>
+      <executions>
+        <execution>
+          <id>pre-unit-test</id>
+          <goals>
+            <goal>prepare-agent</goal>
+          </goals>
+        </execution>
+        <execution>
+          <id>post-unit-test</id>
+          <phase>test</phase>
+          <goals>
+            <goal>report</goal>
+          </goals>
+        </execution>
+      </executions>
+    </plugin>	  
 
 <plugin>
    <groupId>org.apache.maven.plugins</groupId>
@@ -72,73 +82,16 @@
     <configuration>
 	<groupId>abc</groupId>
 	<artifactId>abc</artifactId>
-	<version>${build.version}</version>
+	<version>${version}</version>
 	<repositoryId>nexus-releases</repositoryId>
-       <url>http://local:8081/nexus/content/repositories/releases</url>
-       <file>dist/abc.war</file>
+       <url>http://ec2-52-66-5-42.ap-south-1.compute.amazonaws.com:8081/nexus/content/repositories/releases</url>
+       <file>target/abc.war</file>
        <packaging>war</packaging>
     </configuration>
       </execution>
    </executions>
 </plugin>
 
-
-<plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-dependency-plugin</artifactId>
-        <version>2.10</version>
-        <executions>
-          <execution>
-            <id>nexus-releases</id>
-            <phase>package</phase>
-            <goals>
-              <goal>copy</goal>
-            </goals>
-            <configuration>
-              <artifactItems>
-                <artifactItem>
-                  <groupId>abc</groupId>
-                  <artifactId>abc</artifactId>
-                  <version>${build.version}</version>
-                  <type>war</type>
-                  <destFileName>abc-${build.version}.war</destFileName>
-                </artifactItem>
-              </artifactItems>
-			  <overWrite>true</overWrite>
-              <outputDirectory>/dest</outputDirectory>
-              <overWriteReleases>false</overWriteReleases>
-              <overWriteSnapshots>true</overWriteSnapshots>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
-
-	  
-	  <plugin> 
-      <groupId>com.oracle.weblogic</groupId> 
-      <artifactId>weblogic-maven-plugin</artifactId> 
-      <version>10.3.6.0</version> 
-      <configuration> 
-           <adminurl>t3://${MERRULES.admin.host}:${MERRULES.admin.port}</adminurl>
-          <user>${MERRULES.admin.name}</user> 
-          <password>${MERRULES.admin.password}</password>
-			<targets>${MERRULES.targets}</targets>
-          <upload>true</upload> 
-          <action>${action}</action> 
-          <remote>false</remote> 
-          <verbose>true</verbose> 
-			<source>/dest/abc-${build.version}.war</source> 
-         <name>abc</name> 
-      </configuration> 
-      <executions> 
-         <execution> 
-            <phase>install</phase> 
-              <goals> 
-                <goal>${action}</goal> 
-              </goals> 
-         </execution> 
-       </executions> 
-       </plugin> 
 
   </plugins>
   </build>
