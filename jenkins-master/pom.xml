@@ -27,7 +27,7 @@
     <dependency>
     <groupId>Git_jenkins_ramen</groupId>
     <artifactId>output</artifactId>
-    <version>${build.version}</version>      
+    <version>${version}</version>      
     <type>jar</type>	
     </dependency>
   </dependencies>
