@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>Git_jenkins_ramen</groupId>
   <artifactId>output</artifactId>
-  <packaging>pom</packaging>
+  <packaging>jar</packaging>
   <version>${version}</version>
 
   <properties>
