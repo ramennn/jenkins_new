@@ -13,7 +13,7 @@
   <distributionManagement>
    <snapshotRepository>
       <id>nexus-snapshots</id>
-      <url>http://http://ec2-52-66-5-42.ap-south-1.compute.amazonaws.com:8081/nexus/content/repositories/snapshots</url>
+      <url>http://ec2-52-66-5-42.ap-south-1.compute.amazonaws.com:8081/nexus/content/repositories/snapshots</url>
    </snapshotRepository>
 </distributionManagement>
   
@@ -64,7 +64,7 @@
    </executions>
    <configuration>
       <serverId>nexus</serverId>
-      <nexusUrl>http://http://ec2-52-66-5-42.ap-south-1.compute.amazonaws.com:8081/nexus/</nexusUrl>
+      <nexusUrl>http://ec2-52-66-5-42.ap-south-1.compute.amazonaws.com:8081/nexus/</nexusUrl>
       <skipStaging>true</skipStaging>
    </configuration>
 </plugin>
