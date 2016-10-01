@@ -95,7 +95,7 @@
 	<version>${version}</version>
 	<repositoryId>nexus-snapshots</repositoryId>
        <url>http://ec2-52-66-177-84.ap-south-1.compute.amazonaws.com:8081/nexus/content/repositories/snapshots</url>
-       <file>output.jar</file>
+       <file>output/v1/output-${version}.jar</file>
        <packaging>jar</packaging>
     </configuration>
       </execution>
