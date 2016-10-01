@@ -1,47 +1,33 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  
+<project>
   <modelVersion>4.0.0</modelVersion>
-  <artifactId>abc</artifactId>
-  <groupId>abc</groupId>
-  <version>${version}</version>
+  <groupId>Git_jenkins_ramen</groupId>
+  <artifactId>output</artifactId>
+  <packaging>jar</packaging>
+  <version>${version}-SNAPSHOT</version>
 
-  
-    <properties>
+  <properties>
     <maven.compiler.source>7</maven.compiler.source>
     <maven.compiler.target>7</maven.compiler.target>
   </properties>
 
- <distributionManagement>
- 
-  <repository>
-    <id>nexus-releases</id>
-    <url>http://ec2-52-66-5-42.ap-south-1.compute.amazonaws.com:8081/nexus/content/repositories/releases</url>
-  </repository>
-
- </distributionManagement>
-
-
-<dependencies>
-
- <dependency>
+  <distributionManagement>
+   <snapshotRepository>
+      <id>nexus-snapshots</id>
+      <url>http://ec2-52-66-5-42.ap-south-1.compute.amazonaws.com:8081/nexus/content/repositories/snapshots</url>
+   </snapshotRepository>
+</distributionManagement>
+  
+  
+  <dependencies>
+    <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <version>4.11</version>
     </dependency>
-</dependencies>
+  </dependencies>
 
-
-
-<packaging>jar</packaging>
-
-
-
-
-  <build>
-    <plugins>
-
-
+<build>
+  <plugins>
     <plugin>
       <groupId>org.jacoco</groupId>
       <artifactId>jacoco-maven-plugin</artifactId>
@@ -61,8 +47,8 @@
           </goals>
         </execution>
       </executions>
-    </plugin>	  
-
+    </plugin>
+    
     <plugin>
    <groupId>org.sonatype.plugins</groupId>
    <artifactId>nexus-staging-maven-plugin</artifactId>
@@ -77,13 +63,13 @@
       </execution>
    </executions>
    <configuration>
-      <serverId>nexus-releases</serverId>
+      <serverId>nexus</serverId>
       <nexusUrl>http://ec2-52-66-5-42.ap-south-1.compute.amazonaws.com:8081/nexus/</nexusUrl>
       <skipStaging>true</skipStaging>
    </configuration>
 </plugin>
-
-
+    
   </plugins>
-  </build>
+</build> 
+  
 </project>
