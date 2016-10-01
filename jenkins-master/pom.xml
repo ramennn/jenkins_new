@@ -14,7 +14,7 @@
 <snapshotRepository>
           <id>nexus-snapshots</id>
         <url>http://ec2-52-66-177-84.ap-south-1.compute.amazonaws.com:8081/nexus/content/repositories/snapshots</url>
-      <version>v1</version>
+   
 </snapshotRepository>
 </distributionManagement>
 
