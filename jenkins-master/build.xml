@@ -6,7 +6,7 @@
 
   
   <path id="classpath.test">
-    <pathelement location="lib/junit-4.12.jar"/>
+    <pathelement location="junit-4.12.jar"/>
   </path>
 
   <target name="compile">
